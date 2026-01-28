@@ -31,34 +31,38 @@ const Siswa = () => {
 
   return (
     <div>
-      <form onSubmit={tambahSiswa}>
-        <input
-          type="text"
-          name="nama"
-          placeholder="Nama siswa"
-          required
-        />
-        <input
-          type="number"
-          name="nilai"
-          placeholder="Nilai siswa"
-          required/>
-        <button className="btn tambah" type="submit">Tambah Data</button>
-        <button className="btn reset" type="button" onClick={resetSiswa}>Reset Data</button>
-      </form>
-      <ul>
-        {siswa.map(({ id, nama, nilai }) => (
-          <li key={id}>
-            {/* Template Literal */}
-            {`${nama} | Nilai: ${nilai} | Status: `}
-            
-            {/* Ternary Operator */}
-            <strong>
-              {nilai >= 75 ? "Lulus" : "Tidak Lulus"}
-            </strong>
-          </li>
-        ))}
-      </ul>
+      <div className="main">
+        <h1>DATA NILAI SISWA</h1>
+        <form onSubmit={tambahSiswa}>
+          <input
+            type="text"
+            name="nama"
+            placeholder=" Masukkan nama siswa"
+            required
+          />
+          <input
+            type="number"
+            name="nilai"
+            placeholder="Masukkan nilai siswa"
+            required/>
+          <button className="btn tambah" type="submit">Tambah Data</button>
+          <button className="btn reset" type="button" onClick={resetSiswa}>Reset Data</button>
+        </form>
+        <div className="data-siswa">
+          <h3>Daftar Nilai Siswa</h3>
+          <ul>
+            {siswa.length === 0 && <p>Data siswa kosong.</p>}
+            {siswa.map(({ id, nama, nilai }) => (
+              <li key={id}>
+                {`${nama} | Nilai: ${nilai} | Status: `}
+                <strong>
+                  {nilai >= 75 ? "Lulus" : "Tidak Lulus"}
+                </strong>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
