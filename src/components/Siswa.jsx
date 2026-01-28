@@ -37,7 +37,7 @@ const Siswa = () => {
           <input
             type="text"
             name="nama"
-            placeholder=" Masukkan nama siswa"
+            placeholder="Masukkan nama siswa"
             required
           />
           <input
